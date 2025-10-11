@@ -1,7 +1,6 @@
 # NTP Facade SMR
 
 [![PyPI version](https://badge.fury.io/py/ntp-facade-smr.svg)](https://badge.fury.io/py/ntp-facade-smr)
-[![Build Status](https://github.com/cylissama/ntp-facade-smr/actions/workflows/python-package.yml/badge.svg)](https://github.com/cylissama/ntp-facade-smr/actions)
 
 A simple Python library that provides a clean, user-friendly facade for synchronizing a client's clock with a specified NTP server.
 
