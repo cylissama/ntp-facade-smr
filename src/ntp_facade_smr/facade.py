@@ -1,8 +1,5 @@
-# src/ntp_client_facade/facade.py
-
 import ntplib
 import socket
-from time import ctime
 
 # --- Subsystem Classes ---
 
@@ -24,11 +21,9 @@ class _NtpClient:
         self._ntp_client = ntplib.NTPClient()
         self._timeout = timeout
 
-    # <-- MODIFIED to accept a port parameter
     def fetch_time(self, server: str, port: int) -> float:
         """Requests time from a single NTP server on a specific port."""
         try:
-            # Pass the port directly to the ntplib request method
             response = self._ntp_client.request(server, port=port, version=3, timeout=self._timeout)
             return response.tx_time
         except Exception as e:
@@ -38,7 +33,6 @@ class _NtpClient:
 
 class TimeBrokerFacade:
     """Provides a simple, unified interface to get synchronized time."""
-    # <-- MODIFIED to accept an optional port
     def __init__(self, ntp_server_ip: str, port: int = 123):
         """
         Initializes the facade.
@@ -52,7 +46,7 @@ class TimeBrokerFacade:
         
         self._pool_manager = _ServerPoolManager(custom_server_ip=ntp_server_ip)
         self._ntp_client = _NtpClient()
-        self._port = port # <-- Store the port
+        self._port = port
 
     def get_synchronized_time(self) -> float:
         """
@@ -61,7 +55,6 @@ class TimeBrokerFacade:
         server = self._pool_manager.get_servers()[0]
         print(f"--> [Facade] Attempting to sync with '{server}:{self._port}'...")
         try:
-            # <-- MODIFIED to pass the stored port to the client
             timestamp = self._ntp_client.fetch_time(server, port=self._port)
             print(f"✅ [Facade] Success! Received time from '{server}'.")
             return timestamp

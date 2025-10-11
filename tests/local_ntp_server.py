@@ -1,4 +1,3 @@
-# my_ntp_project/local_ntp_server.py
 import socket
 import time
 import struct

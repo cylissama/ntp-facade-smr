@@ -1,5 +1,3 @@
-# my_ntp_project/local_test.py
-
 from ntp_facade_smr import TimeBrokerFacade
 from time import ctime
 
