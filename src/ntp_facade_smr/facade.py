@@ -56,8 +56,8 @@ class TimeBrokerFacade:
         print(f"--> [Facade] Attempting to sync with '{server}:{self._port}'...")
         try:
             timestamp = self._ntp_client.fetch_time(server, port=self._port)
-            print(f"✅ [Facade] Success! Received time from '{server}'.")
+            print(f"Success! Received time from '{server}'.")
             return timestamp
         except (socket.gaierror, ntplib.NTPException, socket.timeout, IOError) as e:
-            print(f"    ❌ [Facade] Failed to connect: {e}")
+            print(f"Failed to connect: {e}")
             raise IOError(f"Critical: Could not get time from NTP server '{server}'.") from e
