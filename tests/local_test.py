@@ -2,7 +2,7 @@ from ntp_facade_smr import TimeBrokerFacade
 from time import ctime
 
 LOCAL_NTP_SERVER = "127.0.0.1"
-LOCAL_NTP_PORT = 12345 # Our custom port for the local test server
+LOCAL_NTP_PORT = 123 # Our custom port for the local test server
 
 def run_facade_test():
     """
