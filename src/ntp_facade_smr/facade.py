@@ -4,7 +4,6 @@ import socket
 # --- Subsystem Classes ---
 
 class _ServerPoolManager:
-    # This class remains unchanged
     def __init__(self, custom_server_ip: str = None):
         if custom_server_ip:
             self._servers = [custom_server_ip]
@@ -56,8 +55,8 @@ class TimeBrokerFacade:
         print(f"--> [Facade] Attempting to sync with '{server}:{self._port}'...")
         try:
             timestamp = self._ntp_client.fetch_time(server, port=self._port)
-            print(f"Success! Received time from '{server}'.")
+            print(f"✅ Success! Received time from '{server}'.")
             return timestamp
         except (socket.gaierror, ntplib.NTPException, socket.timeout, IOError) as e:
-            print(f"Failed to connect: {e}")
+            print(f"❌ Failed to connect: {e}")
             raise IOError(f"Critical: Could not get time from NTP server '{server}'.") from e
