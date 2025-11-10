@@ -1,5 +1,7 @@
 # NTP Facade SMR
 
+Part of a larger project involing smart manufactoring robotics systems, with data collection devices
+
 [![PyPI version](https://badge.fury.io/py/ntp-facade-smr.svg)](https://badge.fury.io/py/ntp-facade-smr)
 
 NTP facade package for use in our smart manufactoring robot project
